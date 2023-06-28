@@ -14,7 +14,7 @@ jobs:
     - name: lib
       run: cd src/; make matrix.a
     - name: install
-      run: apt install check valgrind
+      run: sudo apt install check valgrind
   
   tests:
     runs-on: ubuntu-latest
