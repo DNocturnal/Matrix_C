@@ -1,11 +1,10 @@
 // gcc -o test s21_matrix_test.c s21_matrix.c -lcheck -lm -lpthread && ./test
 // leaks -atExit -- ./test
 // valgrind --leak-check=full --show-leak-kinds=all -s ./test
-/*
+
 #include "matrix.h"
-
 #include <check.h>
-
+/*
 START_TEST(test_s21_create) {
   matrix_t result;
   // 1
@@ -313,7 +312,7 @@ START_TEST(test_s21_matrix_mult_number) {
   ck_assert_int_eq(s21_mult_number(&test1, 45, &result1), ERR_MATRIX);
 }
 END_TEST
-
+*/
 START_TEST(test_s21_matrix_mult_matrix) {
   matrix_t test1, test2, result1, result2;
   // 1
@@ -627,7 +626,7 @@ START_TEST(test_s21_calc_complements) {
   s21_remove_matrix(&result1);
 }
 END_TEST
-
+/*
 START_TEST(test_s21_determinant) {
   matrix_t test = {0};
   double result;
@@ -774,7 +773,7 @@ START_TEST(test_s21_inverse) {
   s21_remove_matrix(&result2);
 }
 END_TEST
-
+*/
 int main() {
   Suite *s = suite_create("s21_matrix_tests");
   TCase *tc_core = tcase_create("Core");
@@ -783,17 +782,17 @@ int main() {
 
   suite_add_tcase(s, tc_core);
 
-  tcase_add_test(tc_core, test_s21_create);
-  tcase_add_test(tc_core, test_s21_eq);
+  // tcase_add_test(tc_core, test_s21_create);
+  // tcase_add_test(tc_core, test_s21_eq);
   // tcase_add_test(tc_core, test_s21_remove);
-  tcase_add_test(tc_core, test_s21_matrix_sum);
-  tcase_add_test(tc_core, test_s21_matrix_sub);
-  tcase_add_test(tc_core, test_s21_matrix_mult_number);
+  // tcase_add_test(tc_core, test_s21_matrix_sum);
+  // tcase_add_test(tc_core, test_s21_matrix_sub);
+  // tcase_add_test(tc_core, test_s21_matrix_mult_number);
   tcase_add_test(tc_core, test_s21_matrix_mult_matrix);
   tcase_add_test(tc_core, test_s21_transpose);
   tcase_add_test(tc_core, test_s21_calc_complements);
-  tcase_add_test(tc_core, test_s21_determinant);
-  tcase_add_test(tc_core, test_s21_inverse);
+  // tcase_add_test(tc_core, test_s21_determinant);
+  // tcase_add_test(tc_core, test_s21_inverse);
 
   srunner_set_fork_status(sr, CK_NOFORK);
   srunner_run_all(sr, CK_VERBOSE);
@@ -802,4 +801,3 @@ int main() {
 
   return (number_failed == 0) ? EXIT_SUCCESS : EXIT_FAILURE;
 }
-*/
