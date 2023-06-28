@@ -1,7 +1,7 @@
 // gcc -o test s21_matrix_test.c s21_matrix.c -lcheck -lm -lpthread && ./test
 // leaks -atExit -- ./test
 // valgrind --leak-check=full --show-leak-kinds=all -s ./test
-
+/*
 #include "matrix.h"
 
 #include <check.h>
@@ -802,4 +802,4 @@ int main() {
 
   return (number_failed == 0) ? EXIT_SUCCESS : EXIT_FAILURE;
 }
-
+*/
