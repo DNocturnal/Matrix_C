@@ -1,4 +1,4 @@
-#include "s21_matrix.h"
+#include "matrix.h"
 
 /**
  * @brief Создание матрицы
