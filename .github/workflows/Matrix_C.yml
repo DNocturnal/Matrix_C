@@ -1,0 +1,35 @@
+name: Matrix_C CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: lib
+      run: cd src/; make matrix.a
+  
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: linter
+      run: cd src; make check
+    - name: leak
+      run: cd src; make leaks
+    - name: test
+      run: cd src; make test
+  
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: install lcov
+      run: apt-install lcov
+    - name: report
+      run: make gcov_report
