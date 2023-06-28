@@ -14,8 +14,7 @@ jobs:
     - name: lib
       run: cd src/; make matrix.a
     - name: install
-      run: sudo apt install check;
-          sudo apt install valgrind
+      run: sudo apt install check valgrind lcov
   
   tests:
     runs-on: ubuntu-latest
@@ -32,7 +31,5 @@ jobs:
     needs: tests
     steps:
     - uses: actions/checkout@v3
-    - name: install lcov
-      run: apt-install lcov
     - name: report
       run: make gcov_report
